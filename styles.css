@@ -12,6 +12,28 @@ hr {
     width: 480px;
 }
 
+#info-tab {
+    width: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+#errors-tab {
+    display: flex;
+    flex-direction: row;
+}
+
+#errors-tab h3, #difficulty-tab h3{
+    margin-right: 5px;
+}
+
+#difficulty-tab {
+    display: flex;
+    flex-direction: row;
+}
+
 #errors {
     color: red;
 }
