@@ -3,15 +3,15 @@ var numSelected = null;
 var errors = 0;
 
 var board = [
-    "--74916-5",
-    "2---6-3-9",
-    "-----7-1-",
-    "-586----4",
-    "--3----9-",
-    "--62--187",
-    "9-4-7---2",
-    "67-83----",
-    "81--45---"
+    "007491605",
+    "200060309",
+    "000007010",
+    "058600004",
+    "003000090",
+    "006200187",
+    "904070002",
+    "670830000",
+    "810045000"
 ]
 
 var solution = [
@@ -44,7 +44,10 @@ function setGame() {
         for (let b = 0; b < 9; b++) {
             let tile = document.createElement("div");
             tile.id = a.toString() + "-" + b.toString();
-            this.addEventListener("click", selectTile);
+            if (board[a][b] != "0") {
+                tile.innerText = board[a][b];
+            }
+            tile.addEventListener("click", selectTile);
             tile.classList.add("tile");
             document.getElementById("board").appendChild(tile);
         }
