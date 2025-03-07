@@ -60,7 +60,7 @@ hr {
 #numbers {
     width: 450px;
     height: 50px;
-    margin: 0 auto;
+    margin: 15px auto;
     display: flex;
     flex-wrap: wrap;
 }
@@ -98,7 +98,6 @@ hr {
 }
 
 #buttons button {
-    margin-top: 5px;
     color: black;
     border: 1px solid black;
     height: 25px;
