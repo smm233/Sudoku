@@ -8,12 +8,14 @@ var board = [];
 
 var solution = [];
 
+const difficulty = document.getElementById("difficulty");
+
 async function getGame(url) {
     const response = await fetch(url);
     var data = await response.json();
     board = data.newboard.grids[0].value;
     solution = data.newboard.grids[0].solution;
-    difficulty = data.newboard.grids[0].difficulty;
+    difficulty.innerHTML = data.newboard.grids[0].difficulty;
     setGame();
 }
 
