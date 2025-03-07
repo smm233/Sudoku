@@ -80,3 +80,28 @@ function selectTile() {
         }
     }
 }
+
+function solveGame() {
+    document.getElementById("board").innerHTML = "";
+    for (let a = 0; a < 9; a++) {
+        for (let b = 0; b < 9; b++) {
+            let tile = document.createElement("div");
+            tile.id = a.toString() + "-" + b.toString();
+            if (board[a][b] != "0") {
+                tile.innerText = board[a][b];
+                tile.classList.add("tile-initial");
+            }
+            if (board[a][b] == "0") {
+                tile.innerText = solution[a][b];
+            }
+            if (a == 2 || a == 5) {
+                tile.classList.add("horizontal-line")
+            }
+            if (b == 2 || b == 5) {
+                tile.classList.add("vertical-line")
+            }
+            tile.classList.add("tile");
+            document.getElementById("board").appendChild(tile);
+        }
+    }
+}
