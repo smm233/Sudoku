@@ -46,6 +46,13 @@ function setGame() {
             tile.id = a.toString() + "-" + b.toString();
             if (board[a][b] != "0") {
                 tile.innerText = board[a][b];
+                tile.classList.add("tile-initial");
+            }
+            if (a == 2 || a == 5) {
+                tile.classList.add("horizontal-line")
+            }
+            if (b == 2 || b == 5) {
+                tile.classList.add("vertical-line")
             }
             tile.addEventListener("click", selectTile);
             tile.classList.add("tile");
