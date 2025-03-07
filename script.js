@@ -2,32 +2,24 @@ var tileSelected = null;
 var numSelected = null;
 var errors = 0;
 
-var board = [
-    "007491605",
-    "200060309",
-    "000007010",
-    "058600004",
-    "003000090",
-    "006200187",
-    "904070002",
-    "670830000",
-    "810045000"
-]
+const api_url = "https://sudoku-api.vercel.app/api/dosuku";
 
-var solution = [
-    "387491625",
-    "241568379",
-    "569327418",
-    "758619234",
-    "123784596",
-    "496253187",
-    "934176852",
-    "675832941",
-    "812945763"
-]
+var board = [];
+
+var solution = [];
+
+async function getGame(url) {
+    const response = await fetch(url);
+    var data = await response.json();
+    board = data.newboard.grids[0].value;
+    solution = data.newboard.grids[0].solution;
+    difficulty = data.newboard.grids[0].difficulty;
+    setGame();
+}
+
 
 window.onload = function () {
-    setGame();
+    getGame(api_url);
 }
 
 function setGame() {
