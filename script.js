@@ -44,8 +44,26 @@ function setGame() {
         for (let b = 0; b < 9; b++) {
             let tile = document.createElement("div");
             tile.id = a.toString() + "-" + b.toString();
+            this.addEventListener("click", selectTile);
             tile.classList.add("tile");
             document.getElementById("board").appendChild(tile);
         }
+    }
+}
+
+function selectNumber() {
+    if (numSelected != null) {
+        numSelected.classList.remove("num-selected");
+    }
+    numSelected = this;
+    numSelected.classList.add("num-selected");
+}
+
+function selectTile() {
+    if (numSelected) {
+        if(this.innerText != "") {
+            return;
+        }
+        this.innerText = numSelected.id;
     }
 }
