@@ -74,6 +74,15 @@ function selectTile() {
         if(this.innerText != "") {
             return;
         }
-        this.innerText = numSelected.id;
+        let coords = this.id.split("-");
+        let a = parseInt(coords[0]);
+        let b = parseInt(coords[1]);
+
+        if (solution[a][b] == numSelected.id) {
+            this.innerText = numSelected.id;
+        } else {
+            errors += 1;
+            document.getElementById("errors").innerText = errors;
+        }
     }
 }
