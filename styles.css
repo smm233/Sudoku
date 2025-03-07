@@ -92,3 +92,16 @@ hr {
 .vertical-line {
     border-right: 1px solid black;
 }
+
+#buttons {
+    margin: 0 auto;
+}
+
+#buttons button {
+    margin-top: 5px;
+    color: black;
+    border: 1px solid black;
+    height: 25px;
+    cursor: pointer;
+    background: transparent;
+}
