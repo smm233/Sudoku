@@ -7,25 +7,41 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Sudoku.</h1>
-    <hr>
-    <div id="info-tab">
-        <div id="difficulty-tab">
-            <h3>Difficulty:</h3>
-            <h3 id="difficulty">Loading...</h3>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>Sudoku.</h1>
+                <h4>Timer: Coming soon lol</h4>
+            </div>
+            <hr>
         </div>
-        <div id="errors-tab">
-            <h3>Errors:</h3>
-            <h3 id="errors">0</h3>
+        <div class="menu">
+            <div id="errors-tab">
+                <h3>Errors:</h3>
+                <h3 id="errors">0</h3>
+            </div>
+            <div>
+                <h3>Difficulty:</h3>
+                <div id="difficulty-tab">
+                    <button class="btn">Easy</button>
+                    <button class="btn">Medium</button>
+                    <button class="btn">Hard</button>
+                </div>
+            </div>
+            <div>
+                <h3>Options:</h3>
+                <div id="buttons">
+                    <button class="btn" onclick="window.location.reload()">New Game</button>
+                    <button class="btn" onclick="solveGame()">Solve</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <!--9x9 Sudoku Board-->
-    <div id="board"></div>
-    <!--9 Numbers-->
-    <div id="numbers"></div>
-    <div id="buttons">
-        <button onclick="window.location.reload()">New Game</button>
-        <button onclick="solveGame()">Solve</button>
+        <div class="content">
+            <!--9x9 Sudoku Board-->
+            <div id="board"></div>
+            <!--9 Numbers-->
+            <div id="numbers"></div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
