@@ -4,25 +4,123 @@
     font-family: 'Sawarabi Mincho', serif;
 }
 
-body {
-    text-align: center;
+.container {
+    display: grid;
+    grid-template-areas:
+      "header header"
+      "menu content";
+    grid-template-columns: 1fr 3fr;
+    gap: 5px;
+    padding: 10px 75px;
+  }
+  
+.container > div {
+background-color: rgba(255, 255, 255, 0.8);
+padding: 10px;
 }
 
-h1{
-    margin: 20px auto;
+.container > div.header {
+grid-area: header;
 }
 
+.container > div.menu {
+grid-area: menu;
+display: flex;
+flex-direction: column;
+gap: 20px;
+}
+
+.container > div.content {
+    grid-area: content;
+  }
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+@keyframes float {
+	0% {
+		transform: translateX(-50%) translatey(0px);
+	}
+	50% {
+		transform: translateX(-50%) translatey(-6px);
+	}
+	100% {
+		transform: translateX(-50%) translatey(0px);
+	}
+}
+
+.btn:hover {
+    box-shadow: 2px 2px 0 0 var(--btn-color);
+  }
+  
+  .btn:active {
+    transition: 50ms ease;
+    box-shadow:  0 0 0 0 var(--btn-color);
+  }
+  
+  .btn:focus-visible {
+    outline: 0;
+    --btn-color: #002cc8;
+  }
+  
+  .btn:focus-visible::after {
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 12px);
+    transform: translateX(-50%);
+    content: "\21E7";
+    animation: float .5s ease-in-out infinite;
+  }
+
+  .btn {
+    --btn-color: black;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    padding: 14px 22px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: system-ui;
+    border: 2px solid var(--btn-color);
+    transition: 100ms ease;
+    box-shadow: 5px 5px 0 0 var(--btn-color);
+  }
+  
+  .btn--secondary {
+    --btn-color: #666;
+    --btn-bg: #fafafa;
+  }
+  
 hr {
     margin: 0 auto;
-    width: 480px;
 }
 
-#info-tab {
-    width: 440px;
+.header-content {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
     justify-content: space-between;
-    margin: 0 auto;
+}
+
+.header-content h4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+
+#difficulty-tab {
+    display: flex;
+    justify-content: space-around;
 }
 
 #errors-tab {
@@ -30,13 +128,8 @@ hr {
     flex-direction: row;
 }
 
-#errors-tab h3, #difficulty-tab h3{
+#errors-tab h3{
     margin-right: 5px;
-}
-
-#difficulty-tab {
-    display: flex;
-    flex-direction: row;
 }
 
 #errors {
@@ -71,6 +164,7 @@ hr {
 }
 
 .number {
+    color: black;
     width: 44px;
     height: 44px;
     border: 1px solid black;
@@ -96,16 +190,4 @@ hr {
 
 .vertical-line {
     border-right: 1px solid black;
-}
-
-#buttons {
-    margin: 0 auto;
-}
-
-#buttons button {
-    color: black;
-    border: 1px solid black;
-    height: 25px;
-    cursor: pointer;
-    background: transparent;
 }
