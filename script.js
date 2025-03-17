@@ -10,19 +10,47 @@ var solution = [];
 
 // const difficulty = document.getElementById("difficulty");
 
-async function getGame(url) {
-    const response = await fetch(url);
-    var data = await response.json();
-    board = data.newboard.grids[0].value;
-    solution = data.newboard.grids[0].solution;
-    // difficulty.innerHTML = data.newboard.grids[0].difficulty;
-    setGame();
+async function getGame(difficulty) {
+    while (true) {
+        try {
+            const response = await fetch(api_url);
+            const data = await response.json();
+            
+            if (data.newboard && data.newboard.grids.length > 0) {
+                const puzzle = data.newboard.grids[0];
+                document.getElementById("board").innerHTML = "";
+                document.getElementById("numbers").innerHTML = "";
+                if (puzzle.difficulty === difficulty) {
+                    console.log(`Found a ${difficulty} difficulty puzzle:`, puzzle);
+                    board = puzzle.value;
+                    solution = puzzle.solution;
+                    difficulty = puzzle.difficulty;
+                    console.log(difficulty);
+                    setGame();
+                    return;
+                }
+            }
+        } catch (error) {
+            console.error("Error fetching Sudoku puzzle:", error);
+        }
+
+        // Wait a short time before retrying to avoid spamming the API
+        await new Promise(resolve => setTimeout(resolve, 500));
+    }
 }
 
+// Event listener for buttons
+document.querySelectorAll("#difficulty-tab .btn").forEach(button => {
+    button.addEventListener("click", function () {
+        const difficulty = this.innerText; // Get button text (Easy, Medium, Hard)
+        getGame(difficulty);
+    });
+});
 
+// Load a game on page load
 window.onload = function () {
-    getGame(api_url);
-}
+    getGame("Easy"); // Default difficulty
+};
 
 function setGame() {
     for(let i = 1; i <= 9; i++) {
